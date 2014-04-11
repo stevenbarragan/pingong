@@ -1,4 +1,4 @@
-Template.game.rendered = ->
+Template.pingpong.rendered = ->
   player1 = new Player
   player2 = new Player
   window.ball = new Ball

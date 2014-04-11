@@ -7,11 +7,9 @@ class @Ball
   move: ->
     x = Math.cos(@angle) * @direction
     y = Math.sin(@angle) * @direction
-
     if @no_crash(x, y)
       @x += x
       @y += y
-
       @animate()
     else
       @direction *= -1
@@ -19,11 +17,10 @@ class @Ball
 
   animate: =>
     @circle.transition().
-      duration(1000).
+      duration(1250).
       attr('cx', @x).
       attr('cy', @y).
       each('end', =>
-        console.log 'end'
         @move()
       )
 
