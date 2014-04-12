@@ -1,11 +1,16 @@
 class @Game
   constructor : ()->
+    @width = 900
+    @heigt = 400
+
     @board = d3.select('#board').
       append("svg").
-      attr("width", 900).
-      attr("height", 400)
+      attr("width", @with).
+      attr("height", @heigt)
 
     @ball = new Ball(@)
+
+    window.ball = @ball
 
     @player1 = new Player_one(@)
     @player2 = new Player_two(@)

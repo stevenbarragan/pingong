@@ -6,3 +6,5 @@ class @Player_one extends @Player
       attr("height", 100).
       attr("x", 0).
       attr("y", 0)
+  base: ->
+    @width
