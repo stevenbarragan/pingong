@@ -1,6 +1,6 @@
 class @Game
   constructor : ()->
-    @width = 900
+    @width = 950
     @heigt = 450
 
     @board = d3.select('#board').
