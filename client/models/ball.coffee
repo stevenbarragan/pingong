@@ -1,12 +1,23 @@
 class @Ball
-  angle: 0
-  direction: 1
-  x: 450
-  y: 200
+  constructor: (@game) ->
+    @angle = 0
+    @direction = 1
+    @x = 450
+    @y = 200
+
+    @circle = @game.board.append("circle").
+      style('fill', 'black').
+      attr('cx', @x).
+      attr('cy', @y).
+      attr('r', 20)
+
+  start: ->
+    @move()
 
   move: ->
     x = Math.cos(@angle) * @direction
     y = Math.sin(@angle) * @direction
+
     if @no_crash(x, y)
       @x += x
       @y += y
