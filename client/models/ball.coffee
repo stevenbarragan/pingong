@@ -27,14 +27,28 @@ class @Ball
       @direction_y *= -1
       @move()
     else
-      if @crash_left(new_x, new_y) || @crash_right(new_x, new_y)
-        console.log 'crash left'
-        @direction_x *= -1
-        @move()
+      if @direction_x > 0
+        if @crash_right_player(new_x, new_y)
+          @direction_x = -1
+          @move()
+        else
+          if @crash_right(new_x)
+            console.log('lost player 2')
+          else
+            @x = new_x
+            @y = new_y
+            @animate()
       else
-        @x = new_x
-        @y = new_y
-        @animate()
+        if @crash_left_player(new_x, new_y)
+          @direction_x = 1
+          @move()
+        else
+          if @crash_left(new_x)
+            console.log('lost player 1')
+          else
+            @x = new_x
+            @y = new_y
+            @animate()
 
   crash_top: (y)->
     y < 0
@@ -42,15 +56,17 @@ class @Ball
   crash_bot: (y) ->
     y > 400
 
-  crash_left: (x,y) ->
-    min_x = 0
-    min_x = @game.player1.base() + @r if @game.player1.in_range(y)
-    x < min_x
+  crash_left_player: (x,y) ->
+    @game.player1.in_range(y) && x < @game.player1.base()
 
-  crash_right: (x,y) ->
-    max_x = @game.width
-    max_x = @game.player2.base() - @r if @game.player2.in_range(y)
-    x > max_x
+  crash_left: (x) ->
+    x < 0
+
+  crash_right_player: (x, y) ->
+    @game.player2.in_range(y) && x > @game.player2.base()
+
+  crash_right: (x) ->
+    x > @game.width
 
   animate: =>
     @circle.transition().

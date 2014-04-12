@@ -1,7 +1,7 @@
 class @Game
   constructor : ()->
     @width = 900
-    @heigt = 400
+    @heigt = 450
 
     @board = d3.select('#board').
       append("svg").

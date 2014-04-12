@@ -3,7 +3,7 @@ class @Player_one extends @Player
     @rect = @game.board.append("rect").
       style("fill", "black").
       attr("width", 30).
-      attr("height", 100).
+      attr("height", 150).
       attr("x", 0).
       attr("y", 0)
   base: ->
