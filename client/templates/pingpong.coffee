@@ -1,7 +1,5 @@
 Template.pingpong.rendered = ->
-  @game = new Game
-
-  @game.ball.start()
+  window.game = @game = new Game
 
   d3.select('body').
     on('keydown', () =>
