@@ -1,5 +1,5 @@
 class @Ball
-  constructor: (@game, @model) ->
+  constructor: (@game, @match) ->
     @angle = Math.PI / 4
     @direction_x = 1
     @direction_y = 1
@@ -9,12 +9,12 @@ class @Ball
 
     @circle = @game.board.append("circle").
       style('fill', 'black').
-      attr('cx', @model.ball.x).
-      attr('cy', @model.ball.y).
+      attr('cx', @match.ball.x).
+      attr('cy', @match.ball.y).
       attr('r', @r)
 
   set: (x,y)->
-    Matches.update(_id: @model._id, {ball: {x: x, y: y}})
+    Matches.update(_id: @match._id, {$set: {ball: {x: x, y: y}}})
     @x = x
     @y = y
 
@@ -46,7 +46,7 @@ class @Ball
           @move()
         else
           if @crash_right(new_x)
-            console.log('lost player 2')
+            console.log 'player 2 lost'
             @direction_x = -1
             @move()
           else
@@ -58,7 +58,7 @@ class @Ball
           @move()
         else
           if @crash_left(new_x)
-            console.log('lost player 1')
+            console.log 'player 1 lost'
             @direction_x = 1
             @move()
           else

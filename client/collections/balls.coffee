@@ -1,1 +1,1 @@
-window.Matches = new Meteor.Collection 'matchs'
+window.Matches = new Meteor.Collection 'matches'

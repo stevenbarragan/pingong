@@ -1,0 +1,2 @@
+Template.game.name = ->
+  'Steven'

@@ -1,5 +1,5 @@
 class @Player_two extends @Player
-  constructor: (@game) ->
+  constructor: (@game, @player_id) ->
     @rect = @game.board.append("rect").
       style("fill", "black").
       attr("width", 30).
@@ -9,3 +9,6 @@ class @Player_two extends @Player
   base: ->
     @game.width - @width
 
+  set: (y)->
+    @y += y
+    Matches.update({_id: @game.match._id},{ $set: { "player_2.y": @y}})
