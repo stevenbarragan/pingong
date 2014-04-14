@@ -5,7 +5,7 @@ class @Ball
     @direction_y = 1
     @x = 450
     @y = 200
-    @r = 20
+    @r = 10
 
     @circle = @game.board.append("circle").
       style('fill', 'black').

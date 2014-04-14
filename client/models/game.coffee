@@ -31,11 +31,9 @@ class @Game
   check_player_1: ->
     Deps.autorun ->
       model = Matches.findOne(match._id)
-      console.log model
       window.game.player1.move( model.player_1.y )
 
   check_player_2: ->
     Deps.autorun ->
       model = Matches.findOne(match._id)
-      console.log model
       window.game.player2.move( model.player_2.y )
